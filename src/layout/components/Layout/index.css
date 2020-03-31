@@ -1,0 +1,7 @@
+.layout_container {
+  /* should be done properly */
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
