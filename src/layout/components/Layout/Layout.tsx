@@ -1,6 +1,6 @@
 import React, { ReactChild } from 'react';
 
-import SearchInput from 'src/input/components/SearchInput';
+import SearchInput from 'src/search/components/SearchInput';
 import { Coordinates } from 'src/map/types';
 
 import './index.css';
