@@ -3,20 +3,17 @@
 
 export type Coordinates = [number, number];
 
-export type Chart = {
-  id: string;
-  title: string;
-};
-
 export interface State {
-  list: Array<Chart>;
+  list: Array<object>;
   map: {
-    center: Coordinates;
+    center: {
+      coords: Coordinates;
+    };
   };
 }
 
 // ACTIONS TYPES
 export type SetCenterAction = {
   type: String;
-  coords: Coordinates;
+  l: any;
 };

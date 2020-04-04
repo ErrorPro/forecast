@@ -1,0 +1,11 @@
+.rainy_icon {
+  height: 50px !important;
+  width: 50px !important;
+}
+
+.map {
+  margin: auto;
+  min-height: 60vh;
+  display: flex;
+  flex: 1;
+}

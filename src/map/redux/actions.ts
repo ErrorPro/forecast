@@ -1,8 +1,15 @@
-import { Coordinates, SetCenterAction } from 'src/map/types';
+import { SetCenterAction } from 'src/map/types';
 
 export const SET_CENTER = 'SET_CENTER';
 
-export const setCenter = (coords: Coordinates): SetCenterAction => ({
+export const setCenter = (l: any): SetCenterAction => ({
   type: SET_CENTER,
-  coords,
+  l,
+});
+
+export const ADD_LOCATION = 'ADD_LOCATION';
+
+export const addLocation = (location: any) => ({
+  type: ADD_LOCATION,
+  location,
 });

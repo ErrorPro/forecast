@@ -39,6 +39,8 @@ const api = async (store, { headers, ...action }) => {
   } catch (e) {
     store.dispatch(createFailureAction(action));
     console.log(e);
+
+    return false;
   }
 };
 

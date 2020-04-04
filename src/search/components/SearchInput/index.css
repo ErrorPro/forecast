@@ -1,7 +1,41 @@
-.layout_container {
+.search_input_container {
   /* should be done properly */
-  height: 100vh;
   display: flex;
-  flex-direction: column;
-  flex: 1;
+  flex-direction: row;
+}
+
+.search_input_button {
+  font-size: 28px;
+  cursor: pointer;
+  color: #757575;
+  border: none;
+  background: #dfebf5;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  transition: all 0.2s;
+}
+
+.search_input_button:hover {
+  background: #6fc6ed;
+  color: white;
+}
+
+.search_result_container {
+  position: absolute;
+  z-index: 99999;
+  background: white;
+  max-height: 150px;
+  overflow-y: scroll;
+  margin-top: 10px;
+  color: black;
+}
+
+.search_result_container > div {
+  cursor: pointer;
+  padding: 5px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.search_result_container > div:hover {
+  background: rgba(0, 0, 0, 0.1);
 }

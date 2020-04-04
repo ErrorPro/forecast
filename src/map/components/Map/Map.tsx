@@ -1,16 +1,28 @@
 import React, { useRef, useEffect } from 'react';
-import { map, tileLayer, Map } from 'leaflet';
+import { map, tileLayer, Map, marker } from 'leaflet';
 import { Coordinates } from 'src/map/types';
+import Marker from 'src/map/components/Marker';
+
+import './index.css';
 
 type MapProps = {
   map: {
-    center: Coordinates;
+    center: {
+      coords: Coordinates;
+    };
   };
+  list: [];
 };
 
-export default ({ map: { center } }: MapProps) => {
+export default ({
+  list,
+  map: {
+    center: { coords },
+  },
+}: MapProps) => {
   const domEl = useRef(null);
   let mapInstance = useRef<Map | null>(null);
+  let centerMarker = useRef(null);
 
   useEffect(() => {
     // @ts-ignore
@@ -31,10 +43,36 @@ export default ({ map: { center } }: MapProps) => {
   }, [domEl]);
 
   useEffect(() => {
-    if (mapInstance.current) mapInstance.current.setView(center, 13);
-  }, [center]);
+    if (mapInstance.current && coords) {
+      if (!centerMarker.current) {
+        centerMarker.current = marker(coords).addTo(mapInstance.current);
+      } else {
+        centerMarker.current.setLatLng(coords);
+      }
+
+      mapInstance.current.setView(coords, 7);
+
+      centerMarker.current.bindPopup('You are currently here');
+    }
+  }, [coords]);
+
+  useEffect(() => {
+    if (list.length) {
+      mapInstance.current.fitBounds(
+        list.map((e: any) => e.latLng).concat(coords ? [coords] : [])
+      );
+    }
+  }, [coords, list, list.length]);
 
   return (
-    <div id="map" ref={domEl} style={{ height: '500px', width: '500px' }} />
+    <div id="map" ref={domEl} className="map">
+      {list.map((e: any, i) => (
+        <Marker
+          key={`${i}_${e.Key}`}
+          location={e}
+          mapInstance={mapInstance.current}
+        />
+      ))}
+    </div>
   );
 };
