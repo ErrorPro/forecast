@@ -1,5 +1,7 @@
 import { createApiAction, createAsyncActionRequestTypes } from 'src/api';
 
+const DATASERVICE_TOKEN = 'in0sEeGZLsXTzSjhkXxMEIj8q2qGP563';
+
 export const ACCWEATHER_AUTOCOMPLETE = createAsyncActionRequestTypes(
   'ACCWEATHER_AUTOCOMPLETE'
 );
@@ -8,9 +10,9 @@ export const autocompleteQuery = q =>
   createApiAction(
     {
       url:
-        'http://dataservice.accuweather.com/locations/v1/cities/search?apikey=:t&q=:q',
+        'https://dataservice.accuweather.com/locations/v1/cities/search?apikey=:t&q=:q',
       params: {
-        t: 'SS8byzuCjuQyce1f6f2jUzAxLsaH2uGF',
+        t: DATASERVICE_TOKEN,
         q,
       },
     },
@@ -25,9 +27,9 @@ export const getForecastForLocation = key =>
   createApiAction(
     {
       url:
-        'http://dataservice.accuweather.com/forecasts/v1/daily/1day/:key?apikey=:t',
+        'https://dataservice.accuweather.com/forecasts/v1/daily/1day/:key?apikey=:t',
       params: {
-        t: 'SS8byzuCjuQyce1f6f2jUzAxLsaH2uGF',
+        t: DATASERVICE_TOKEN,
         key,
       },
     },

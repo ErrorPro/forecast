@@ -24,12 +24,10 @@ function* centerGetAirportSaga({ l }) {
 }
 
 function* getTicketPrice(location) {
-  // CONTINUE HERE
-  const { center } = yield select(state => state.map)
-  // const { locations: [departure] } = yield putResolve(getAirportByLocation(location.EnglishName))
+  const { departureAirport } = yield select(state => state.search)
   const { locations: [destination] } = yield putResolve(getAirportByLocation(location.EnglishName))
 
-  yield putResolve(getPriceToLocation(location.Key, 'AMS', destination.id))
+  yield putResolve(getPriceToLocation(location.Key, departureAirport, destination.id))
 }
 
 function* getLocationDataSaga(location) {
