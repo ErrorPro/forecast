@@ -1,3 +1,12 @@
+TODO:
+
+1. Some part of the project are not properly typed due to lack of time.
+2. Error hanlings. Need to impletemt a proper error hanlings for map and search actions.
+3. Media query for mobile devices: fonts are too big.
+4. Autocomplete for searching places. Now it's implemented via button because there's a limit for api calls.
+5. Move all constant/secret variables into env/config.
+6. Some more: optimization, additional features such as remove marker or grad, go back to select my place/allow to drag my place.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
